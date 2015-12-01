@@ -1,0 +1,22 @@
+<div class="container">
+ <div class="row">
+   <div class="col-sm-4 col-sm-offset-4">
+   <p><%= @experience.created_at %></p>
+   <h1><%= @experience.name %></h1>
+   <h3>Category : <%= @experience.category %></h3>
+
+   <%#= image_tag @experience.picture.url(:medium) %>
+
+   <p>Description : <%= @experience.description %></p>
+   <p>City : <%= @experience.city %></p>
+   <p>Address : <%= @experience.address %></p>
+
+   <p>This experience is available on <%= @experience.day %></p>
+
+   <p>The duration of this experience is <%= @experience.duration %></p>
+
+   <p><%= link_to "Book", experiences_path %></p>
+   <p><%= link_to "Back", experiences_path %></p>
+   </div>
+ </div>
+</div>

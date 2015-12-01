@@ -1,0 +1,29 @@
+<h1>Experiences#new</h1>
+<p>Find me in app/views/experiences/new.html.erb</p>
+
+<%= form_for @experience do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+  <br>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <br>
+  <%= f.label :day %>
+  <%= f.date_select :day %>
+  <br>
+  <%= f.label :duration %>
+  <%= f.text_field :duration %>
+  <br>
+  <%= f.label :category %>
+  <%= f.select :category, Experience::CATEGORIES %>
+  <br>
+  <%= f.label :picture %>
+  <%= f.file_field :picture %>
+  <%= f.submit "Submit" %>
+<% end %>
