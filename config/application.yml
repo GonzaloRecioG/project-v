@@ -10,6 +10,3 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-S3_BUCKET_NAME: "gonimages"
-AWS_ACCESS_KEY_ID: "AKIAIMLVCEUNUZGCSYGA"
-AWS_SECRET_ACCESS_KEY: "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"
