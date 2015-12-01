@@ -1,0 +1,13 @@
+
+<% if @reviews.empty? %>
+  <p>You have no Reviews for this experience yet. Why not <%= link_to 'Add new review', new_experience_review_path %>?</p>
+  <% else %>
+<!-- loop in restaurants array and display the restaurants -->
+  <% @reviews.each do |review| %>
+    <div>
+      <p><%= review.comment %> <%= review.rating %></p>
+    </div>
+  <% end %>
+  <%= link_to 'Add new review', new_experience_review_path %>?</p>
+
+<% end %>
