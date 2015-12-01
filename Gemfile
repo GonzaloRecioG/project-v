@@ -7,6 +7,8 @@ gem 'figaro'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
 
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
