@@ -15,4 +15,11 @@ class ExperiencesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def experience_params
+    params.require(:experience).permit(:name, :description, :address, :city, :day, :duration, :category, :picture)
+  end
+
 end
