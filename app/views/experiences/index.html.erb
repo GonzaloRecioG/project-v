@@ -1,2 +1,26 @@
 <h1>Experiences#index</h1>
 <p>Find me in app/views/experiences/index.html.erb</p>
+
+
+<% if @experiences.empty? %>
+  <p>You have no Experiences yet. Why not <%= link_to 'Create New', new_experience_path %>?</p>
+  <% else %>
+<!-- loop in restaurants array and display the restaurants -->
+  <% @experiences.each do |restaurant| %>
+    <div>
+      <p><%= experience.name %><br>
+        <%= experience.description %><br>
+        <%= experience.city %><br>
+        <%= experience.address %><br>
+        <%= experience.day %><br>
+        <%= experience.duration %><br>
+        <%= experience.category %><br>
+        <%= link_to 'Show details', experience_path(experience) %>
+        <%= link_to 'Add Review', new_experience_review_path(experience) %></p>
+    </div>
+  <% end %>
+  <%= link_to 'Create New', new_experience_path %>?</p>
+
+<% end %>
+
+
