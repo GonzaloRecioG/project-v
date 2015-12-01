@@ -1,5 +1,6 @@
  class ReviewsController < ApplicationController
  before_action :find_experience, only: [:new, :create, :index]
+ before_action :authenticate_user!
 
   def index
     @reviews = @experience.reviews
