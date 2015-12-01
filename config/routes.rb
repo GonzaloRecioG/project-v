@@ -1,8 +1,12 @@
+
 Rails.application.routes.draw do
+  root to: "experiences#index"
   resources :experiences, only: [:index, :new, :show, :create, :destroy] do
     resources :reviews, only: [:index, :new, :create]
   end
 end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

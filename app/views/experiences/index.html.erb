@@ -5,8 +5,8 @@
 <% if @experiences.empty? %>
   <p>You have no Experiences yet. Why not <%= link_to 'Create New', new_experience_path %>?</p>
   <% else %>
-<!-- loop in restaurants array and display the restaurants -->
-  <% @experiences.each do |restaurant| %>
+<!-- loop in experiences array and display the experiences -->
+  <% @experiences.each do |experience| %>
     <div>
       <p><%= experience.name %><br>
         <%= experience.description %><br>

@@ -8,9 +8,16 @@ class ExperiencesController < ApplicationController
   end
 
   def create
+    @experience = Experience.new(experience_params)
+    if @experience.save
+      redirect_to experience_path(@experience.id)
+    else
+      render :new
+    end
   end
 
   def show
+    @experience = Experience.find(params[:id])
   end
 
   def destroy

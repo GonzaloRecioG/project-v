@@ -1,3 +1,4 @@
+ class ReviewsController < ApplicationController
  before_action :find_experience, only: [:new, :create, :index]
 
   def index
