@@ -1,7 +1,16 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 #image secure
 gem 'figaro'
+
+#devise
+gem 'devise'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+gem 'autoprefixer-rails'
+gem 'simple_form'
+
 
 #papercilp
 gem 'aws-sdk', '< 2.0'
@@ -47,7 +56,9 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'quiet_assets'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
