@@ -11,6 +11,14 @@ gem 'font-awesome-sass'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 
+#geo mapping
+gem "geocoder"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore" #we do this because is not available on rubygems, but on rails assets
+end
+
 
 #papercilp
 gem 'aws-sdk', '< 2.0'
