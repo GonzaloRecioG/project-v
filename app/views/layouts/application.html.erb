@@ -8,8 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   </head>
   <body class="<%= content_for :body_class %>">
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+    <%= render 'shared/flashes' %>
+    <div class="page">
+      <%= render 'shared/navbar' %>
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
     <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
