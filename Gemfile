@@ -19,6 +19,8 @@ source 'https://rails-assets.org' do
   gem "rails-assets-underscore" #we do this because is not available on rubygems, but on rails assets
 end
 
+# facebook connection
+gem 'omniauth-facebook'
 
 #papercilp
 gem 'aws-sdk', '< 2.0'
