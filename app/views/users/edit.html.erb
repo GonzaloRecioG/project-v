@@ -1,0 +1,22 @@
+<div class="container">
+ <div class="row">
+   <div class="col-sm-4 col-sm-offset-4">
+      <h1>Edit user</h1>
+
+      <%= form_for @user do |f| %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+        <br>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+        <br>
+        <%= f.label :bio %>
+        <%= f.text_field :bio %>
+        <br>
+        <%= f.submit "Submit" %>
+      <% end %>
+
+
+   </div>
+ </div>
+</div>
