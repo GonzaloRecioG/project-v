@@ -3,7 +3,12 @@ class ExperiencesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @experiences = Experience.all
+    @experiences = Experience.where.not(latitude: nil) #.all
+
+    @markers = Gmaps4rails.build_markers(@experiences) do |experience, marker|
+      marker.lat experience.latitude
+      marker.lng experience.longitude
+    end
   end
 
   def new
@@ -21,6 +26,7 @@ class ExperiencesController < ApplicationController
 
   def show
     @experience = Experience.find(params[:id])
+    @experience_coordinates = { lat: @experience.latitude, lng: @experience.longitude}  #raw method
   end
 
   def destroy

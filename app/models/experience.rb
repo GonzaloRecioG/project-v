@@ -11,4 +11,11 @@ class Experience < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
 
+  geocoded_by :full_address
+  after_validation :geocode, if: :address_changed?
+
+  def full_address
+    [address, city].compact.join(', ')
+  end
+
 end

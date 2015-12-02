@@ -20,3 +20,13 @@
    </div>
  </div>
 </div>
+
+<% content_for(:after_js) do %>
+
+<script>
+  $(document).ready(function(){
+  console.log('<%= raw @experience_coordinates.to_json %>');
+});
+</script>
+
+<% end %>
