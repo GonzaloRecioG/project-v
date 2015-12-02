@@ -1,6 +1,12 @@
 
 Rails.application.routes.draw do
+
+
   devise_for :users
+
+  resources :users, only: [:show] do
+    resources :bookings, only: [:create, :index, :destroy]
+  end
   root to: "experiences#index"
   resources :experiences, only: [:index, :new, :show, :create, :destroy] do
     resources :reviews, only: [:index, :new, :create]
