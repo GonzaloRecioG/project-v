@@ -15,7 +15,8 @@
 
    <p>The duration of this experience is <%= @experience.duration %></p>
 
-   <p><%= link_to "Book", experiences_path %></p>
+
+   <p><%= button_to "Book it", user_bookings_path(current_user, experience_id: @experience.id) %></p>
    <p><%= link_to "Back", experiences_path %></p>
    </div>
  </div>

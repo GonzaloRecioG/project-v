@@ -1,6 +1,5 @@
 class Experience < ActiveRecord::Base
 
-
   CATEGORIES = ["Homeless", "Greenpeace", "Animals", "Old people", "Food giving"]
 
   has_attached_file :picture,
@@ -10,6 +9,7 @@ class Experience < ActiveRecord::Base
     content_type: /\Aimage\/.*\z/
 
   has_many :reviews, dependent: :destroy
+  has_many :bookings
 
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?
