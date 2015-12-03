@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202154735) do
+ActiveRecord::Schema.define(version: 20151202182115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,10 @@ ActiveRecord::Schema.define(version: 20151202154735) do
     t.datetime "picture_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "user_id"
   end
+
+  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
@@ -81,5 +84,6 @@ ActiveRecord::Schema.define(version: 20151202154735) do
 
   add_foreign_key "bookings", "experiences"
   add_foreign_key "bookings", "users"
+  add_foreign_key "experiences", "users"
   add_foreign_key "reviews", "experiences"
 end

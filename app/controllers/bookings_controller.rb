@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking = current_user.bookings.build(experience: @experience)
     if @booking.save
       flash[:notice] = "Your booking was created."
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       flash[:notice] = "Oops something went wrong"
       render "show"
