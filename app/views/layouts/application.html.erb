@@ -14,8 +14,9 @@
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag "https://maps.google.com/maps/api/js?sensor=false" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCx3wZXvR9LkdZT_oAnEu4tvGbhVciExBc&libraries=places" %>
     <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
+     <%= javascript_include_tag 'autocomplete' %>
     <%= yield(:after_js) %>
   </body>
 </html>
