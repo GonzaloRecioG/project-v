@@ -3,7 +3,14 @@
  * (margin/padding adjustments, background image, etc..)
  * ------------------------------------- */
 
-
+.home{
+  .icon-badge-container {
+  position: relative;
+  font-size: 20px;
+  width: 20px;
+  color: white;
+}
+}
 
 .home{
 .navbar-wagon {
@@ -15,6 +22,15 @@
   right: 0;
   z-index: 101;
   box-shadow: none;
+  color: white;
+  &-link {
+    color: white;
+    font-size: 14px;
+    &:hover {
+      color: #FECA2F;
+      text-decoration: none;
+    }
+}
 }
 }
 

@@ -4,6 +4,9 @@ class ExperiencesController < ApplicationController
 
 
   def index
+    # respond_to do |format|
+    #   format.html { render :layout => 'home' }
+    # end
     @experiences = Experience.where.not(latitude: nil) #.all
 
     @markers = Gmaps4rails.build_markers(@experiences) do |experience, marker|
