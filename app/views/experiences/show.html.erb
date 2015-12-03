@@ -1,44 +1,43 @@
 <div class="container">
- <div class="row">
-   <div class="col-sm-6 col-sm-offset-3">
-   <p><%= @experience.created_at %></p>
-   <h1><%= @experience.name %></h1>
-   <h3><%= @experience.category %></h3>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+  <p><%= @experience.created_at %></p>
+  <h1><%= @experience.name %></h1>
+  <h3><%= @experience.category %></h3>
 
-   <p><%= image_tag @experience.picture.url(:medium) %></p>
+  <p><%= image_tag @experience.picture.url(:medium) %></p>
 
-   <p>Description : <%= @experience.description %></p>
-   <p>City : <%= @experience.city %></p>
-   <p>Address : <%= @experience.address %></p>
-   <p>Available on: <%= @experience.day %></p>
-   <p>Duration of experience: <%= @experience.duration %></p>
+  <p>Description : <%= @experience.description %></p>
+  <p>City : <%= @experience.city %></p>
+  <p>Address : <%= @experience.address %></p>
+  <p>Available on: <%= @experience.day %></p>
+  <p>Duration of experience: <%= @experience.duration %></p>
 
-   <p>Created by <br>
-    <%= image_tag @experience.user.picture %>
-    <%= link_to @experience.user.first_name, user_path(@experience.user) %> </p>
+  <p>Created by <br>
+   <%= image_tag @experience.user.picture %>
+   <%= link_to @experience.user.first_name, user_path(@experience.user) %> </p>
 
-   <p>Who's going?</p>
-   <% @experience.bookings.each do |booking| %>
-    <ul>
-     <li><%= booking.user.first_name  %> </li>
-    </ul>
-   <p>Are going!</p>
+  <p>Who's going?</p>
+  <% @experience.bookings.each do |booking| %>
+   <ul>
+    <li><%= booking.user.first_name  %> </li>
+   </ul>
+  <p>Are going!</p>
 
-    <% end %>
+   <% end %>
 
 
-
-   <p><%= button_to "Book it", user_bookings_path(current_user, experience_id: @experience.id) %></p>
-   <p><%= link_to "Back", experiences_path %></p>
-   </div>
- </div>
+  <p><%= button_to "Book it", user_bookings_path(current_user, experience_id: @experience.id) %></p>
+  <p><%= link_to "Back", experiences_path %></p>
+  </div>
+</div>
 </div>
 
 <% content_for(:after_js) do %>
 
 <script>
-  $(document).ready(function(){
-  console.log('<%= raw @experience_coordinates.to_json %>');
+ $(document).ready(function(){
+ console.log('<%= raw @experience_coordinates.to_json %>');
 });
 </script>
 

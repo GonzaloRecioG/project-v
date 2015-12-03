@@ -1,0 +1,38 @@
+<div class="container">
+<h1>Explore volunteering experiences</h1>
+<p>Find me in app/views/search/index.html.erb</p>
+
+  <div class="row">
+    <div class="col-sm-5 scrollit">
+      <% if @experiences.empty? %>
+        <p>No Experiences yet. Why not <%= link_to 'Create New', new_experience_path %>?</p>
+      <% else %>
+        <!-- loop in experiences array and display the experiences -->
+        <% @experiences.each do |experience| %>
+        <div class="row">
+          <div class = "panel panel-default">
+            <div class = "panel-body">
+              <% @city = params[:search] %>
+                <%= image_tag experience.picture(:thumb) %>
+              <h4><%= experience.name %></h4>
+                <%= experience.description %><br>
+                <%= experience.city %><br>
+                <%= experience.address %><br>
+                <%= experience.day %><br>
+                <%= experience.duration %><br>
+                <%= experience.category %><br>
+                <%= link_to 'Show details', experience_path(experience), class: 'btn btn-primary' %>
+                <%#= link_to 'Add Review', new_experience_review_path(experience) %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-7 fixed">
+     <p>map here</p>
+    </div>
+  </div>
+</div>
+      <%= link_to 'Create New', new_experience_path %>?</p>
+
