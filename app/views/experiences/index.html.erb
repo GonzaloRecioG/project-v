@@ -9,9 +9,13 @@
                   <h1>Find local Volunteer Experiences</h1>
 
             </div>
-            <!-- <div class="description">
-                <div class="inner"></div>
-            </div> -->
+            <br>
+            <form action="" class="hidden-xs hidden-sm">
+      <input type="text" class="navbar-wagon-search-input" id= "user_input_autocomplete_location_by_city" placeholder="Type your City">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
         </div>
         <div class="filter"></div>
         <video autoplay loop class="fillWidth">
@@ -40,6 +44,7 @@
         <%= experience.category %><br>
         <%= link_to 'Show details', experience_path(experience) %>
         <%= link_to 'Add Review', new_experience_review_path(experience) %></p>
+
     </div>
   <% end %>
   <%= link_to 'Create New', new_experience_path %>?</p>

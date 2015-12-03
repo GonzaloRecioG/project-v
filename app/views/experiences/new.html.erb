@@ -9,10 +9,10 @@
   <%= f.text_field :description %>
   <br>
   <%= f.label :city %>
-  <%= f.text_field :city %>
+  <%= f.text_field :city,  id: "user_input_autocomplete_location_by_city" %>
   <br>
   <%= f.label :address %>
-  <%= f.text_field :address %>
+  <%= f.text_field :address, id: "user_input_autocomplete_location" %>
   <br>
   <%= f.label :day %>
   <%= f.date_select :day %>
