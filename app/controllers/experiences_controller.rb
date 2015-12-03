@@ -18,6 +18,7 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
+    @experience.set_user!(current_user)
     if @experience.save
       redirect_to experience_path(@experience.id)
     else
@@ -36,7 +37,7 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(:name, :description, :address, :city, :day, :duration, :category, :picture)
+    params.require(:experience).permit(:name, :description, :address, :city, :day, :duration, :category, :picture, :user_id)
   end
 
 end
