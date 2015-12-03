@@ -9,13 +9,33 @@
 
    <%= link_to 'Edit user', edit_user_path %>?</p>
 
-   <h3>Your booked experiences:</h3>
+   <h3>Your upcoming experiences:</h3>
 
     <% @user.bookings.each do |booking| %>
-    <ul>
-    <li><%= booking.experience.name  %> </li>
-    </ul>
+    <% if(booking.experience.day > Date.today) %>
+      <ul>
+        <li><%= booking.experience.name  %> </li>
+        <li><%= booking.experience.day  %></li>
+      </ul>
 
+        <%end%>
+    <% end %>
+
+
+
+
+     <h3>Your past experiences:</h3>
+
+    <% @user.bookings.each do |booking| %>
+      <% if(booking.experience.day <= Date.today) %>
+          <ul>
+            <li><%= booking.experience.name  %> </li>
+            <li><%= booking.experience.day  %></li>
+            <li><%= link_to 'Add Review', new_experience_review_path(booking.experience) %></p></li>
+
+        </ul>
+
+      <%end%>
     <% end %>
 
     <h3>Experiences you are offering:</h3>
