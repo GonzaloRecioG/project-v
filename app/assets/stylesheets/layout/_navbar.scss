@@ -10,7 +10,7 @@
     width: 100%;
   }
   &-logo {
-    width: 80px;
+    width: 200px;
   }
   &-container {
     display: flex;
@@ -23,7 +23,7 @@
   &-item {
     flex: 0 1 auto;
     cursor: pointer;
-    padding: 0 10px;
+    padding: 0 25px;
   }
   &-search {
     flex: 0 1 300px;
@@ -31,15 +31,17 @@
     justify-content: flex-end;
     padding: 0 10px;
     position: relative;
+    text-align: center;
     &-btn {
       line-height: 40px;
       color: #E6E6E6;
       border: none;
       background: transparent;
-      position: absolute;
+      position: inherit;
       right: 14px;
       top: -2px;
       z-index: 1;
+      text-align: center;
     }
     &-input {
       flex: 0 1 300px;
@@ -49,9 +51,10 @@
       color: #666666;
       border: 1px solid #E6E6E6;
       border-radius: 5px;
-      padding: 0 10px;
+      padding: 0 60px;
       font-size: 14px;
       outline: none;
+      text-align: center;
     }
     &-input:focus  {
       border: 1px solid #CCCCCC;
@@ -70,15 +73,14 @@
     padding: 0 20px;
     border-radius: 20em;
     line-height: 40px;
-    background-color: #D23333;
+    background-color: #FECA2F;
     color: white;
     font-size: 14px;
-    border: 2px solid $brand-color;
+    border: 2px solid #FECA2F;
 
     &:hover {
       color: white;
-      background: $brand-color;
-      border-color: darken($brand-color, 10%);
+      opacity: 0.9;
     }
   }
   &-dropdown-menu {
@@ -94,7 +96,7 @@
       padding: 10px 20px;
       &:hover {
         background: transparent !important;
-        color: black !important;
+        color: #FECA2F !important;
       }
     }
     &:before {
@@ -114,7 +116,7 @@
   hr {
     height: 12px;
     width: 1px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: white;
     margin-left: 10px;
     margin-right: 10px;
   }
