@@ -25,6 +25,15 @@
     <li><%= experience.name  %> </li>
     </ul>
 
+      <% end %>
+
+    <h3>Your reviews:</h3>
+
+    <% @user.userratings.each do |userrating| %>
+    <ul>
+    <li><%= userrating.comment  %> </li>
+    </ul>
+
     <% end %>
 
 
