@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update, :edit] do
     resources :bookings, only: [:create, :index, :destroy]
+    resources :userratings, only: [:new,:create, :index, :destroy]
   end
   root to: "experiences#index"
   resources :experiences, only: [:index, :new, :show, :create, :destroy] do
