@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class= "<%= params[:controller] %> <%= params[:action] %> ">
 <head>
   <title>ProjectV</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -7,12 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   </head>
-  <body class="<%= content_for :body_class %>">
-    <%= render 'shared/flashes' %>
-    <div class="page">
-      <%= render 'shared/navbar' %>
-      <%= yield %>
-    </div>
+
+  <body class="bigcontainer <%= content_for :body_class %>">
+
+      <%= render 'shared/flashes' %>
+      <div class="page">
+        <%= render 'shared/navbar' %>
+        <div class="page-row page-row-expanded"><%= yield %></div>
+      </div>
+      <%= render 'shared/footer' %>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCx3wZXvR9LkdZT_oAnEu4tvGbhVciExBc&libraries=places" %>
     <%= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js" %>
