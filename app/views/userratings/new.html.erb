@@ -1,4 +1,4 @@
-<h1><%="leave a comment" + @user.email %></h1>
+<h1><%="leave a comment for " + @user.email %></h1>
 <p>Add a comment and help other users.</p>
 
 <%= form_for [@user, @userrating] do |f| %>
