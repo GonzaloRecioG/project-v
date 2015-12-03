@@ -57,7 +57,10 @@
       text-align: center;
     }
     &-input:focus  {
-      border: 1px solid #CCCCCC;
+      border: 2px solid #FECA2F;
+    }
+    &-input:focus::-webkit-input-placeholder {
+    opacity: 0;
     }
   }
   &-link {
