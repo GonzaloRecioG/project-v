@@ -3,6 +3,7 @@ class Experience < ActiveRecord::Base
   CATEGORIES = ["Homeless", "Greenpeace", "Animals", "Old people", "Food giving"]
 
   belongs_to :user
+  has_many :users , through: :bookings
 
   has_attached_file :picture,
     styles: { big: "500x300>", medium: "600x300>", thumb: "100x100>" }

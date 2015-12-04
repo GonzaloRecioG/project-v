@@ -1,74 +1,80 @@
 <div class="container">
  <div class="row">
-   <div class="col-sm-6 col-sm-offset-3">
+   <div class="col-sm-12 col-lg-12 col-lg-offset-4">
 
-   <p><%= @user.created_at %></p>
+   <br>
    <%= image_tag @user.picture %>
    <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
    <p><%= @user.email %></p>
+  </div>
+</div>
 
-
-   <h3>Your upcoming experiences:</h3>
+<div class="row">
+  <div class="col-sm-6 col-lg-4">
+   <h3>Upcoming experiences:</h3>
 
     <% @user.bookings.each do |booking| %>
     <% if(booking.experience.day > Date.today) %>
-      <ul>
-        <li><%= booking.experience.name  %> </li>
-        <li><%= booking.experience.day  %></li>
+      <ul class="list-group-item">
+        <li class="list-group-item"><h4>Name: <%= booking.experience.name  %> </h4>  <strong>Date:</strong> <%= booking.experience.day  %> </li>
+
       </ul>
 
         <%end%>
     <% end %>
+  </div>
 
 
 
+  <div class="col-sm-6 col-lg-4">
+     <h3>Past experiences:</h3>
 
-     <h3>Your past experiences:</h3>
-
-    <% @user.bookings.each do |booking| %>
-      <% if(booking.experience.day <= Date.today) %>
-          <ul>
-            <li><%= booking.experience.name  %> </li>
-            <li><%= booking.experience.day  %></li>
-            <li><%= link_to 'Add Review', new_experience_review_path(booking.experience) %></p></li>
-
-        </ul>
-
-      <%end%>
-    <% end %>
-
-    <h3>Experiences you are offering:</h3>
-
-    <% @user.experiences.each do |experience| %>
-    <ul>
-    <li><%= experience.name  %> </li>
-    </ul>
-
+      <% @user.bookings.each do |booking| %>
+        <% if(booking.experience.day <= Date.today) %>
+            <ul class="list-group-item">
+              <li class="list-group-item"> <h4>Name: <%= booking.experience.name %> </h4>  <strong>Date:</strong> <%= booking.experience.day  %>  <%= link_to 'Add Review', new_experience_review_path(booking.experience), class: 'btn btn-small' %></li>
+                <br>
+                <p><strong>participants</strong></p>
+              <%booking.experience.users.each do |user|  %>
+              <li class="list-group-item">
+                <ul>
+                  <li><%= user.email%> <%= link_to 'Leave a comment', new_user_userrating_path(user.id), class: 'btn btn-small' %>
+                  </li>
+                </ul>
+              </li>
+              <%end%>
+            </ul>
+        <%end%>
       <% end %>
+  </div>
 
-    <h3>Your reviews:</h3>
 
-    <% @user.userratings.each do |userrating| %>
-    <ul>
-    <li><%= userrating.comment  %> </li>
-    </ul>
 
+
+  <div class="col-sm-6 col-lg-4">
+    <h3>Experiences offered by you:</h3>
+    <% @user.experiences.each do |experience| %>
+      <ul class="list-group-item">
+        <li class="list-group-item"><h4> Name: <%= experience.name  %> </h4> </li>
+      </ul>
     <% end %>
+  </div>
+</div>
 
-    <div id="comments">
-      <% if @user.comments.blank? %>
-        Be the first to leave a comment for <%= @user.first_name %>
-      <% else %>
-        <% @user.comments.each do |comment| %>
-          <%= render 'comments/show', comment: comment %>
-        <% end %>
+
+
+<div class="row">
+    <div class="col-sm-6 col-lg-4 col-lg-offset-4">
+      <h3>Your reviews:</h3>
+      <% @user.userratings.each do |userrating| %>
+        <ul class="list-group-item">
+          <li class="list-group-item"><%= userrating.comment  %> </li>
+        </ul>
       <% end %>
     </div>
-
-    <%= render 'comments/form', user: @user, comment: @comment %>
-
-
-
-   </div>
- </div>
 </div>
+
+
+
+
+
