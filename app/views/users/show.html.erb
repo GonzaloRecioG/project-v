@@ -36,6 +36,16 @@
 
     <% end %>
 
+    <div id="comments">
+      <% if @user.comments.blank? %>
+        Be the first to leave a comment for <%= @user.first_name %>
+      <% else %>
+        <% @user.comments.each do |comment| %>
+          <%= render 'comments/show', comment: comment %>
+        <% end %>
+      <% end %>
+    </div>
+
 
 
    </div>
