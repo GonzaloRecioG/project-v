@@ -1,36 +1,75 @@
 <div class="container">
 <h1>Explore volunteering experiences</h1>
-<p>Find me in app/views/search/index.html.erb</p>
+
+<!-- SEARCH FORM -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="form-section">
+        <div class="row">
+          <%= render 'shared/searchbox' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <br>
+ <br>
 
   <div class="row">
-    <div class="col-sm-5 scrollit">
+    <div class="col-sm-6">
       <% if @experiences.empty? %>
         <p>No Experiences yet. Why not <%= link_to 'Create New', new_experience_path %>?</p>
       <% else %>
-        <!-- loop in experiences array and display the experiences -->
+
         <% @experiences.each do |experience| %>
-        <div class="row">
+
+        <div class="col-sm-6">
           <div class = "panel panel-default">
             <div class = "panel-body">
-              <% @city = params[:search] %>
-                <%= image_tag experience.picture(:thumb) %>
               <h4><%= experience.name %></h4>
-                <%= experience.description %><br>
-                <%= experience.city %><br>
-                <%= experience.address %><br>
-                <%= experience.day %><br>
-                <%= experience.duration %><br>
-                <%= experience.category %><br>
-                <%= link_to 'Show details', experience_path(experience), class: 'btn btn-primary' %>
-                <%#= link_to 'Add Review', new_experience_review_path(experience) %></p>
+              <h6><%= experience.city %> | <%= experience.category %><br></h6>
+
+              <% if experience.picture.file? %>
+                <%= image_tag experience.picture, class: "img-responsive" %>
+              <% end %>
+
+              <p><%=h truncate(experience.description, :length => 60) %></p>
+              <p>Dates: <%= experience.day %><br>
+                 Duration: <%= experience.duration %><br></p>
+              <h6>Organized by:</h6>
+              <% if experience.user.picture %>
+                <%= image_tag experience.user.picture, class: "avatar"%>
+                <%= link_to experience.user.first_name, user_path(experience.user) %></p>
+              <% else %>
+                <%= link_to experience.user.first_name, user_path(experience.user) %></p>
+              <% end %>
+                <%= link_to 'More info', experience_path(experience), class: 'btn btn-primary' %>
+                </p>
             </div>
           </div>
         </div>
         <% end %>
       <% end %>
     </div>
-    <div class="col-sm-7 fixed">
-     <p>map here</p>
+
+    <div class="col-sm-6">
+     <div id="map" style="width: 100%; height: 400px;"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({
+        provider: {styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}]},
+        internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+    <% end %>
+<% end %>
     </div>
   </div>
 </div>
