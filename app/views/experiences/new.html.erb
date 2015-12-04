@@ -1,43 +1,47 @@
 <div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 width text-center padded">
 
-<h1>Experiences#new</h1>
-<p>Find me in app/views/experiences/new.html.erb</p>
+      <div class="white-pink">
+          <h1>Your new experience</h1>
 
-<%= form_for @experience do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <br>
-  <%= f.label :city %>
-  <%= f.text_field :city,  id: "user_input_autocomplete_location_by_city" %>
-  <br>
-  <%= f.label :address %>
-  <%= f.text_field :address, id: "user_input_autocomplete_location" %>
-  <br>
-  <%= f.label :day %>
-  <%= f.text_field :day %>
-  <br>
-  <%= f.label :duration %>
-  <%= f.text_field :duration %>
-  <br>
-  <%= f.label :category %>
-  <%= f.select :category, Experience::CATEGORIES %>
-  <br>
-  <%= f.label :picture %>
-  <%= f.file_field :picture %>
-  <%= f.submit "Submit" %>
-<% end %>
+          <%= form_for @experience do |f| %>
+            <%= f.label :name %>
+            <%= f.text_field :name%>
+            <br>
+            <%= f.label :description %>
+            <%= f.text_field :description %>
+            <br>
+            <%= f.label :city %>
+            <%= f.text_field :city,  id: "user_input_autocomplete_location_by_city", class: "from-field" %>
+            <br>
+            <%= f.label :address %>
+            <%= f.text_field :address, id: "user_input_autocomplete_location" %>
+            <br>
+            <%= f.label :day %>
+            <%= f.text_field :day %>
+            <br>
+            <%= f.label :duration %>
+            <%= f.text_field :duration %>
+            <br>
+            <%= f.label :category %>
+            <%= f.select :category, Experience::CATEGORIES %>
+            <br>
+            <%= f.label :picture %>
+            <%= f.file_field :picture, class: "picture" %>
+            <%= f.submit "Submit", class: "btn btn-success" %>
+          <% end %>
 
-<% content_for(:after_js) do %>
-  <script>
-    $(function() {
-    $('#experience_day').datepicker({
-      dateFormat: 'dd-mm-yy'
-    });
-  });
-  </script>
-<% end %>
-
+          <% content_for(:after_js) do %>
+            <script>
+              $(function() {
+              $('#experience_day').datepicker({
+                dateFormat: 'dd-mm-yy'
+              });
+            });
+            </script>
+          <% end %>
+      </div>
+    </div>
+  </div>
 </div>
