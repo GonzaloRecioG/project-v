@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203112442) do
+ActiveRecord::Schema.define(version: 20151204082422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20151203112442) do
 
   add_index "bookings", ["experience_id"], name: "index_bookings_on_experience_id", using: :btree
   add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "experiences", force: :cascade do |t|
     t.string   "name"
@@ -93,6 +102,7 @@ ActiveRecord::Schema.define(version: 20151203112442) do
 
   add_foreign_key "bookings", "experiences"
   add_foreign_key "bookings", "users"
+  add_foreign_key "comments", "users"
   add_foreign_key "experiences", "users"
   add_foreign_key "reviews", "experiences"
   add_foreign_key "userratings", "users"

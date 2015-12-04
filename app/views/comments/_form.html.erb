@@ -1,0 +1,5 @@
+
+<%= simple_form_for([ user, comment ], remote: true) do |form| %>
+  <%= form.input :content %>
+  <%= form.button :submit %>
+<% end %>

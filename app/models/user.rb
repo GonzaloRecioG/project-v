@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :comments, dependent: :destroy
   has_many :bookings
   has_many :experiences
   has_many :userratings

@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :experiences, only: [:index, :new, :show, :create, :destroy] do
     resources :reviews, only: [:index, :new, :create]
   end
+
+  resources :users, only: [ :index, :show ] do
+    resources :comments, only: :create
+  end
 end
 
 
