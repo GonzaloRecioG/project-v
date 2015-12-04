@@ -51,10 +51,7 @@ ActiveRecord::Schema.define(version: 20151204082422) do
     t.datetime "picture_updated_at"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "user_id"
   end
-
-  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.text     "comment"
@@ -103,7 +100,5 @@ ActiveRecord::Schema.define(version: 20151204082422) do
   add_foreign_key "bookings", "experiences"
   add_foreign_key "bookings", "users"
   add_foreign_key "comments", "users"
-  add_foreign_key "experiences", "users"
   add_foreign_key "reviews", "experiences"
-  add_foreign_key "userratings", "users"
 end
