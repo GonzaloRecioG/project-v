@@ -17,7 +17,7 @@
   <%= f.text_field :address, id: "user_input_autocomplete_location" %>
   <br>
   <%= f.label :day %>
-  <%= f.date_select :day %>
+  <%= f.text_field :day %>
   <br>
   <%= f.label :duration %>
   <%= f.text_field :duration %>
@@ -28,6 +28,16 @@
   <%= f.label :picture %>
   <%= f.file_field :picture %>
   <%= f.submit "Submit" %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+    $(function() {
+    $('#experience_day').datepicker({
+      dateFormat: 'dd-mm-yy'
+    });
+  });
+  </script>
 <% end %>
 
 </div>

@@ -11,6 +11,9 @@ gem 'font-awesome-sass'
 gem 'autoprefixer-rails'
 gem 'simple_form'
 
+# calendar
+gem 'jquery-ui-rails'
+
 #geo mapping
 gem "geocoder"
 gem "gmaps4rails"
