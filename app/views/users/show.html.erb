@@ -7,7 +7,6 @@
    <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
    <p><%= @user.email %></p>
 
-   <%= link_to 'Edit user', edit_user_path %>?</p>
 
    <h3>Your booked experiences:</h3>
 
@@ -45,6 +44,8 @@
         <% end %>
       <% end %>
     </div>
+
+    <%= render 'comments/form', user: @user, comment: @comment %>
 
 
 
