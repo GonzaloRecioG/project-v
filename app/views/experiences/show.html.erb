@@ -1,36 +1,67 @@
-<div class="container">
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-  <p><%= @experience.created_at %></p>
-  <h1><%= @experience.name %></h1>
-  <h3><%= @experience.category %></h3>
-
-  <p><%= image_tag @experience.picture.url(:medium) %></p>
-
-  <p>Description : <%= @experience.description %></p>
-  <p>City : <%= @experience.city %></p>
-  <p>Address : <%= @experience.address %></p>
-  <p>Available on: <%= @experience.day %></p>
-  <p>Duration of experience: <%= @experience.duration %></p>
-
-  <p>Created by <br>
-   <%= image_tag @experience.user.picture %>
-   <%= link_to @experience.user.first_name, user_path(@experience.user) %> </p>
-
-  <p>Who's going?</p>
-  <% @experience.bookings.each do |booking| %>
-   <ul>
-    <li><%= booking.user.first_name  %> </li>
-   </ul>
-  <p>Are going!</p>
-
-   <% end %>
 
 
-  <p><%= button_to "Book it", user_bookings_path(current_user, experience_id: @experience.id) %></p>
-  <p><%= link_to "Back", experiences_path %></p>
-  </div>
+<div class="container" id="showexperiences">
+  <div class="row">
+    <div class="col-sm-6">
+
+      <p><%= image_tag @experience.picture.url(:medium) %></p>
+
+      </div>
+      <div class="col-sm-6">
+
+        <div><h1><%= @experience.name %></h1><p id="in"><i>&nbspCreated <%= @experience.created_at.ago_in_words %></i></p></div>
+        <h4><i><%= @experience.category %></i></h4>
+      <hr id="yellow">
+      <p id="by">Created by&nbsp
+        <%= link_to @experience.user.first_name, user_path(@experience.user) %>
+       <%= image_tag @experience.user.picture , class: "picture-exp" %>
+      </p>
+      <hr id="Separate">
+        <p><%= @experience.description %></p>
+<div class="whogoes">
+  <p><%= button_to "I'm going", user_bookings_path(current_user, experience_id: @experience.id), class: "btna"%></p>
+
+   <%# @experience.bookings.each do |booking| %>
+       <!-- <ul>
+        <li><%#= image_tag booking.user.picture , class: "picture-exp"  %> </li>
+       </ul>
+      <p class="whogoes">Are going!</p> -->
+      <%# end %>
+
 </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 where">
+      <h2>Where?</h2>
+      <p>City : <%= @experience.city %></p>
+      <p>Address : <%= @experience.address %></p>
+      <p>Available on: <%= @experience.day %></p>
+      <p>Duration of experience: <%= @experience.duration %></p>
+       <%# @experience.bookings.each do |booking| %>
+       <!-- <ul>
+        <li><%#= image_tag booking.user.picture , class: "picture-exp"  %> </li>
+       </ul>
+      <p class="whogoes">Are going!</p> -->
+      <%# end %>
+      <p><%= link_to "Back", experiences_path %></p>
+
+
+    </div>
+
+    <div class="col-sm-6">
+      <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|#{@experience.address}" %>
+
+    </div>
+  </div>
 </div>
 
 <% content_for(:after_js) do %>

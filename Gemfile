@@ -4,6 +4,9 @@ ruby '2.2.3'
 #image secure
 gem 'figaro'
 
+#time ago
+gem 'time_ago_in_words'
+
 #devise
 gem 'devise'
 gem 'bootstrap-sass'
