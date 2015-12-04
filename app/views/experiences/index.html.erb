@@ -13,9 +13,9 @@
 
         <%= form_tag(search_index_path,  method: :get, class: 'navbar-scorecard-search') do |f| %>
 
-          <%= text_field_tag :city, '', class: 'navbar-wagon-search-input', id:"user_input_autocomplete_location_by_city", placeholder: 'Choose your city' %>
+          <%= text_field_tag :city, '', class: 'navbar-wagon-search-input', id:"user_input_autocomplete_location_by_city", placeholder: 'Type your city' %>
 
-          <%= select_tag :category, options_for_select(Experience::CATEGORIES.collect { |category| [category, category]}), include_blank: "Select a category", class: 'navbar-wagon-search-input' %>
+          <%#= select_tag :category, options_for_select(Experience::CATEGORIES.collect { |category| [category, category]}), include_blank: "Select a category", class: 'navbar-wagon-search-input' %>
 
           <%= button_tag(type: "submit", class: "navbar-scorecard-search-btn") do %>
             <i class="fa fa-search"></i>
@@ -38,113 +38,3 @@
 
 
 
-<% if @experiences.empty? %>
-  <p>You have no Experiences yet. Why not <%= link_to 'Create New', new_experience_path %>?</p>
-  <% else %>
-<!-- loop in experiences array and display the experiences -->
-  <% @experiences.each do |experience| %>
-    <div>
-      <p><%= experience.name %><br>
-        <%= experience.description %><br>
-        <%= experience.city %><br>
-        <%= experience.address %><br>
-        <%= experience.day %><br>
-        <%= experience.duration %><br>
-        <%= experience.category %><br>
-        <%= link_to 'Show details', experience_path(experience) %>
-        <%= link_to 'Add Review', new_experience_review_path(experience) %></p>
-
-    </div>
-  <% end %>
-  <%= link_to 'Create New', new_experience_path %>?</p>
-  <div id="map" style="width: 100%; height: 600px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({
-        provider: {styles: [{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"color":"#f7f1df"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"color":"#d0e3b4"}]},{"featureType":"landscape.natural.terrain","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.medical","elementType":"geometry","stylers":[{"color":"#fbd3da"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#bde6ab"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffe15f"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efd151"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"color":"black"}]},{"featureType":"transit.station.airport","elementType":"geometry.fill","stylers":[{"color":"#cfb2db"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#a2daf2"}]}]},
-        internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    })
-  <% end %>
-<% end %>
-<% end %>
-
-<% content_for(:after_js) do %>
-<script>
-  $( document ).ready(function() {
-
-    // Resive video
-    scaleVideoContainer();
-
-    initBannerVideoSize('.video-container .poster img');
-    initBannerVideoSize('.video-container .filter');
-    initBannerVideoSize('.video-container video');
-
-    $(window).on('resize', function() {
-        scaleVideoContainer();
-        scaleBannerVideoSize('.video-container .poster img');
-        scaleBannerVideoSize('.video-container .filter');
-        scaleBannerVideoSize('.video-container video');
-    });
-
-});
-
-/** Reusable Functions **/
-/********************************************************************/
-
-function scaleVideoContainer() {
-
-    var height = $(window).height();
-    var unitHeight = parseInt(height) + 'px';
-    $('.homepage-hero-module').css('height',unitHeight);
-
-}
-
-function initBannerVideoSize(element){
-
-    $(element).each(function(){
-        $(this).data('height', $(this).height());
-        $(this).data('width', $(this).width());
-    });
-
-    scaleBannerVideoSize(element);
-
-}
-
-function scaleBannerVideoSize(element){
-
-    var windowWidth = $(window).width(),
-        windowHeight = $(window).height(),
-        videoWidth,
-        videoHeight;
-
-    console.log(windowHeight);
-
-    $(element).each(function(){
-        var videoAspectRatio = $(this).data('height')/$(this).data('width'),
-            windowAspectRatio = windowHeight/windowWidth;
-
-        if (videoAspectRatio > windowAspectRatio) {
-            videoWidth = windowWidth;
-            videoHeight = videoWidth * videoAspectRatio;
-            $(this).css({'top' : -(videoHeight - windowHeight) / 2 + 'px', 'margin-left' : 0});
-        } else {
-            videoHeight = windowHeight;
-            videoWidth = videoHeight / videoAspectRatio;
-            $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
-        }
-
-        $(this).width(videoWidth).height(videoHeight);
-
-
-    });
-}
-</script>
-
-<% end %>

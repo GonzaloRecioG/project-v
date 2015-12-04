@@ -9,6 +9,7 @@
   </div>
 </div>
 
+
 <div class="row">
   <div class="col-sm-6 col-lg-4">
    <h3>Upcoming experiences:</h3>
@@ -53,6 +54,7 @@
 
   <div class="col-sm-6 col-lg-4">
     <h3>Experiences offered by you:</h3>
+
     <% @user.experiences.each do |experience| %>
       <ul class="list-group-item">
         <li class="list-group-item"><h4> Name: <%= experience.name  %> </h4> </li>
