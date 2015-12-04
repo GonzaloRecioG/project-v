@@ -1,12 +1,17 @@
 class CommentsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
-    @comment = Comment.new(comment_params)
-    @comment.user = @user
+    @comment = @user.comments.build(comment_params)
     if @comment.save
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html { redirect_to user_path(@user) }
+        format.js
+      end
     else
-      render 'users/show'
+      respond_to do |format|
+        format.html { render 'users/show' }
+        format.js
+      end
     end
   end
 
