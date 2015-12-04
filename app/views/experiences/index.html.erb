@@ -11,16 +11,7 @@
             </div>
             <br>
 
-        <%= form_tag(search_index_path,  method: :get, class: 'navbar-scorecard-search') do |f| %>
-
-          <%= text_field_tag :city, '', class: 'navbar-wagon-search-input', id:"user_input_autocomplete_location_by_city", placeholder: 'Type your city' %>
-
-          <%#= select_tag :category, options_for_select(Experience::CATEGORIES.collect { |category| [category, category]}), include_blank: "Select a category", class: 'navbar-wagon-search-input' %>
-
-          <%= button_tag(type: "submit", class: "navbar-scorecard-search-btn") do %>
-            <i class="fa fa-search"></i>
-        <% end %>
-       <% end %>
+         <%= render 'shared/searchbox' %>
 
 
 
